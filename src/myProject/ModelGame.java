@@ -253,4 +253,39 @@ public class ModelGame {
             enUso[3] = 7;
         }
     }
+
+    /**
+     * Counts the number of dice in "activos", stores and organizes them in "activosContados"
+     */
+    public void conteo(){
+        for (int i = 0; i < 7; i++) {
+            if (activos[i] == 1) {
+                activosContados[0] = activosContados[0] + 1;
+            }if (activos[i] == 2) {
+                activosContados[1] = activosContados[1] + 1;
+            }if (activos[i] == 3) {
+                activosContados[2] = activosContados[2] + 1;
+            }if (activos[i] == 4) {
+                activosContados[3] = activosContados[3] + 1;
+            }if (activos[i] == 5) {
+                activosContados[4] = activosContados[4] + 1;
+            }if (activos[i] == 6) {
+                activosContados[5] = activosContados[5] + 1;
+            }
+        }
+    }
+
+
+    /**
+     * Clear "activosContados" puting a 0 in every position of the array
+     */
+    public void borrarConteo(){
+        activosContados[0] = 0;
+        activosContados[1] = 0;
+        activosContados[2] = 0;
+        activosContados[3] = 0;
+        activosContados[4] = 0;
+        activosContados[5] = 0;
+    }
+
 }
