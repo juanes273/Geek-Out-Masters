@@ -378,4 +378,114 @@ public class ModelGame {
         enUso[2] = 0;
         enUso[3] = 0;
     }
+
+    /**
+     * This function establish "estadoLanzar" to true
+     */
+    public void estadoLanzarCambioTrue(){
+        estadoLanzar = true;
+    }
+
+    /**
+     * This function establish "estadoLanzar" to false
+     */
+    public void estadoLanzarCambioFalse(){
+        estadoLanzar = false;
+    }
+
+    /**
+     * This function add the 42 in "activos" to "cuarentaidos"
+     */
+    public void guardarCuarentaidos(){
+        cuarentaidos = cuarentaidos + activosContados[5];
+    }
+
+    /**
+     * This function establish "cuarentaidos" to 0
+     */
+    public void borrarCuarentaidos(){
+        cuarentaidos = 0;
+    }
+
+    /**
+     * This function establish "estadoSuma" to false
+     */
+    public void estadoSumaCambioFalse(){
+        estadoSuma = false;
+    }
+
+    /**
+     * This function establish "estadoSuma" to true
+     */
+    public void estadoSumaCambioTrue(){
+        estadoSuma = true;
+    }
+
+    /**
+     * This function add the dragons that exist in "activos" to the  dragons that are in others rounds and save it in "dragones"
+     */
+    public void guardarDragones(){
+        dragones = dragones + activosContados[1];
+    }
+
+    /**
+     * This function establish "dragones" to 0
+     */
+    public void borrarDragones(){
+        dragones = 0;
+    }
+
+    /**
+     * This function check in there are dragons and if that's true calls "borrarCuarentaidos()"
+     */
+    public void comprobarDragones(){
+        if(dragones>0){
+            borrarCuarentaidos();
+        }
+    }
+
+    /**
+     * This function returns "activos" array
+     */
+    public int[] getActivos() {return activos;}
+    /**
+     * This function returns "inactivos" array
+     */
+    public int[] getInactivos() {return inactivos;}
+    /**
+     * This function returns "utilizados" array
+     */
+    public int[] getUtilizados() {return utilizados;}
+    /**
+     * This function returns "enUso" array
+     */
+    public int[] getEnUso() {return enUso;}
+    /**
+     * This function "estadoRonda" array
+     */
+    public boolean getEstado() {return estadoRonda;}
+    /**
+     * This function returns "cuarentaidos"
+     */
+    public int getCuarentaidos(){return cuarentaidos;}
+    /**
+     * This function returns "activosContados" array
+     */
+    public int[] getActivosContados(){return activosContados;}
+    /**
+     * This function returns "ronda"
+     */
+    public int getRonda(){return ronda;}
+    /**
+     * This function returns "estadoLanzar"
+     */
+    public boolean getEstadoLanzarCambio(){return estadoLanzar;}
+    /**
+     * This function returns "estadoSuma"
+     */
+    public boolean getEstadoSuma(){return estadoSuma;}
+    /**
+     * This function returns "dragones"
+     */
+    public int getDragones(){return dragones;}
 }
