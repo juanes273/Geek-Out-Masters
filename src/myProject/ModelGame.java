@@ -75,4 +75,104 @@ public class ModelGame {
             utilizados[i] = 0;
         }
     }
+
+    /**
+     * Make the respective changes depending on the chosen die
+     */
+    public void cambios() {
+        if (enUso[0] == 1) {
+
+            //Se relanza el dado al que le aplicaremos el meeple
+            Random aleatorio = new Random();
+            enUso[1] = aleatorio.nextInt(6) + 1;
+
+            //Se pone en la zona de utilizados el dado que recien usamos en este caso el meeple
+            for (int i = 0; i < 10; i++) {
+                if (utilizados[i] == 0) {
+                    utilizados[i] = enUso[0];
+                    break;
+                }
+            }
+
+            //En el espacio del meeple se deja vacio
+            activos[enUso[2] - 1] = 80 + enUso[2];
+            //Ponemos de nuevo el dado al que se aplicó el meeple en el mismo lugar pero esta vez el dado cambió
+            activos[enUso[3] - 1] = enUso[1];
+
+        } else if (enUso[0] == 3) {
+
+
+            if(inactivos[0]!=0 || inactivos[1]!=0 || inactivos[2]!=0 || inactivos[3]!=0 || inactivos[4]!=0 || inactivos[5]!=0) {
+
+                //En la posicion que estaba el dado usado se pone un nuevo dado random
+                Random aleatorio = new Random();
+                activos[enUso[2] - 1] = aleatorio.nextInt(6) + 1;
+
+                // se elimina un dado de la zona de inactivos
+                for (int i = 0; i < 6; i++) {
+                    if (inactivos[i] != 0) {
+                        inactivos[i] = 0;
+                        break;
+                    }
+                }
+            }
+
+            for (int i = 0; i < 10; i++) {
+                if (utilizados[i] == 0) {
+                    utilizados[i] = enUso[0];
+                    break;
+                }
+            }
+
+
+        } else if (enUso[0] == 4) {
+            //pone el dado usado en la zona de utilizados
+            for (int i = 0; i < 10; i++) {
+                if (utilizados[i] == 0) {
+                    utilizados[i] = enUso[0];
+                    break;
+                }
+            }
+            //pone el dado que se destruyó en la zona de dados inactivos
+            for (int i = 0; i < 10; i++) {
+                if (inactivos[i] == 0) {
+                    inactivos[i] = enUso[1];
+                    break;
+                }
+            }
+            //pone el lugar del dado usado en 0
+            activos[enUso[2] - 1] = 80 + enUso[2];
+            //pone el lugar del dado destruido en 0
+            activos[enUso[3] - 1] = 80 + enUso[3];
+
+        } else if (enUso[0] == 5) {
+
+            //pone el dado usado en la zona de utilizados
+            for (int i = 0; i < 10; i++) {
+                if (utilizados[i] == 0) {
+                    utilizados[i] = enUso[0];
+                    break;
+                }
+            }
+
+            //dependiendo de el dado se pone su opuesto
+            if (enUso[1] == 1) {
+                enUso[1] = 4;
+            } else if (enUso[1] == 2) {
+                enUso[1] = 5;
+            } else if (enUso[1] == 3) {
+                enUso[1] = 6;
+            } else if (enUso[1] == 4) {
+                enUso[1] = 1;
+            } else if (enUso[1] == 5) {
+                enUso[1] = 2;
+            } else if (enUso[1] == 6) {
+                enUso[1] = 3;
+            }
+
+            //Se devuelve el dado cambiado a la posicion donde estaba y se elimina el superheroe usado
+            activos[enUso[3] - 1] = enUso[1];
+            activos[enUso[2] - 1] = 80 + enUso[2];
+        }
+    }
 }
