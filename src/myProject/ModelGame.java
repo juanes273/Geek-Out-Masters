@@ -288,4 +288,48 @@ public class ModelGame {
         activosContados[5] = 0;
     }
 
+    /**
+     * This function helps to determine if the round can be finished or if further moves can be made with the dice.
+     */
+    public void determinarEstado(){
+        if(activosContados[5]>=1 && activosContados[0]==0 && activosContados[1]==0 && activosContados[2]==0 && activosContados[3]==0 && activosContados[4]==0 ){
+            estadoRonda = false;
+
+        }if(activosContados[5]>=1 && activosContados[0]==0 && activosContados[1]>=1 && activosContados[2]==0 && activosContados[3]==0 && activosContados[4]==0 ){
+            estadoRonda = false;
+
+        }if(activosContados[5]==0 && activosContados[0]>=1 && activosContados[1]==0 && activosContados[2]==0 && activosContados[3]==0 && activosContados[4]==0 ){
+            estadoRonda = false;
+
+        }if(activosContados[5]==0 && activosContados[0]==0 && activosContados[1]==0 && activosContados[2]==0 && activosContados[3]>=1 && activosContados[4]==0 ){
+            estadoRonda = false;
+
+        }if(activosContados[5]==0 && activosContados[0]==0 && activosContados[1]==0 && activosContados[2]==0 && activosContados[3]==0 && activosContados[4]>=1 ){
+            estadoRonda = false;
+
+        }if(activosContados[5]==0 && activosContados[0]==0 && activosContados[1]>=1 && activosContados[2]==0 && activosContados[3]==0 && activosContados[4]==0 ){
+            estadoRonda = false;
+
+        }if(activosContados[5]==0 && activosContados[0]==0 && activosContados[1]==0 && activosContados[2]==0 && activosContados[3]==0 && activosContados[4]==0){
+            estadoRonda = false;
+
+        }if(activosContados[5]==0 && activosContados[0]==0 && activosContados[1]==0 && activosContados[2]>=1 && activosContados[3]==0 && activosContados[4]==0 && inactivosFinal==0){
+            estadoRonda = false;
+        }if(activosContados[5]>=1 && activosContados[0]==0 && activosContados[1]>=1 && activosContados[2]>=1 && activosContados[3]==0 && activosContados[4]==0 && inactivosFinal==0){
+            estadoRonda = false;
+        }if(activosContados[5]>=1 && activosContados[0]==0 && activosContados[1]==0 && activosContados[2]>=1 && activosContados[3]==0 && activosContados[4]==0 && inactivosFinal==0){
+            estadoRonda = false;
+        }if(activosContados[5]==0 && activosContados[0]==0 && activosContados[1]>=1 && activosContados[2]>=1 && activosContados[3]==0 && activosContados[4]==0 && inactivosFinal==0){
+            estadoRonda = false;
+        }
+    }
+
+
+    /**
+     * This function establish "estadoRonda" to true
+     */
+    public void cambiarEstadoTrue(){
+        estadoRonda = true;
+    }
+
 }
