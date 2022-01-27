@@ -332,4 +332,50 @@ public class ModelGame {
         estadoRonda = true;
     }
 
+    /**
+     * This function add one point to "ronda"
+     */
+    public void  aumentoRonda(){
+        ronda = ronda +1;
+    }
+
+    /**
+     * This function establish all the "enUso" slots to 0
+     */
+    public void deseleccionar() {
+        enUso[0] = 0;
+        enUso[1] = 0;
+        enUso[2] = 0;
+        enUso[3] = 0;
+    }
+    /**
+     * This function reset all values
+     */
+    public void reinciarRonda(){
+        ronda = 0;
+        estadoRonda = true;
+        activos[0] = 0;
+        activos[1] = 0;
+        activos[2] = 0;
+        activos[3] = 0;
+        activos[4] = 0;
+        activos[5] = 0;
+        activos[6] = 0;
+        activosContados[0] = 0;
+        activosContados[1] = 0;
+        activosContados[2] = 0;
+        activosContados[3] = 0;
+        activosContados[4] = 0;
+        activosContados[5] = 0;
+        inactivos[0] = 0;
+        inactivos[1] = 0;
+        inactivos[2] = 0;
+        inactivos[3] = 0;
+        inactivos[4] = 0;
+        inactivos[5] = 0;
+        enUso[0] = 0;
+        enUso[1] = 0;
+        enUso[2] = 0;
+        enUso[3] = 0;
+    }
 }
