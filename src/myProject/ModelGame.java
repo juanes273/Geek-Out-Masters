@@ -41,4 +41,38 @@ public class ModelGame {
         cuarentaidos = 0;
         dragones = 0;
 }
+
+    /**
+     * Put the default values to each string,array and others
+     */
+    public void lanzarDados() {
+        activos[0] = dado1.getCara();
+        activos[1] = dado2.getCara();
+        activos[2] = dado3.getCara();
+        activos[3] = dado4.getCara();
+        activos[4] = dado5.getCara();
+        activos[5] = dado6.getCara();
+        activos[6] = dado7.getCara();
+        activosContados[0] = 0;
+        activosContados[1] = 0;
+        activosContados[2] = 0;
+        activosContados[3] = 0;
+        activosContados[4] = 0;
+        activosContados[5] = 0;
+        inactivos[0] = dado8.getCara();
+        inactivos[1] = dado9.getCara();
+        inactivos[2] = dado10.getCara();
+        inactivos[3] = 0;
+        inactivos[4] = 0;
+        inactivos[5] = 0;
+        enUso[0] = 0;
+        enUso[1] = 0;
+        enUso[2] = 0;
+        enUso[3] = 0;
+        estadoRonda = false;
+
+        for (int i = 0; i < 10; i++) {
+            utilizados[i] = 0;
+        }
+    }
 }
