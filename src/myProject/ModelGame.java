@@ -175,4 +175,82 @@ public class ModelGame {
             activos[enUso[2] - 1] = 80 + enUso[2];
         }
     }
+
+    /**
+     * Functions like "meterenuso1" and the other ones, are functions that store the selected
+     die with its respective position and the die to which you want to apply the effects of the first.
+
+     The difference beetwen every one is that they store the position depending on wich button did you
+     press in the interfaz
+     */
+    public void meterenuso1() {
+        if (enUso[2] == 0) {
+            enUso[0] = activos[0];
+            enUso[2] = 1;
+        } else {
+            enUso[1] = activos[0];
+            enUso[3] = 1;
+        }
+    }
+
+    public void meterenuso2() {
+        if (enUso[2] == 0) {
+            enUso[0] = activos[1];
+            enUso[2] = 2;
+        } else {
+            enUso[1] = activos[1];
+            enUso[3] = 2;
+        }
+    }
+
+    public void meterenuso3(){
+        if (enUso[2] == 0) {
+            enUso[0] = activos[2];
+            enUso[2] = 3;
+        } else {
+            enUso[1] = activos[2];
+            enUso[3] = 3;
+        }
+    }
+
+    public void meterenuso4() {
+        if (enUso[2] == 0) {
+            enUso[0] = activos[3];
+            enUso[2] = 4;
+        } else {
+            enUso[1] = activos[3];
+            enUso[3] = 4;
+        }
+    }
+
+    public void meterenuso5() {
+        if (enUso[2] == 0) {
+            enUso[0] = activos[4];
+            enUso[2] = 5;
+        } else {
+            enUso[1] = activos[4];
+            enUso[3] = 5;
+        }
+    }
+
+    public void meterenuso6() {
+        if (enUso[2] == 0) {
+            enUso[0] = activos[5];
+            enUso[2] = 6;
+        } else {
+            enUso[1] = activos[5];
+            enUso[3] = 6;
+        }
+    }
+
+
+    public void meterenuso7() {
+        if (enUso[2] == 0) {
+            enUso[0] = activos[6];
+            enUso[2] = 7;
+        } else {
+            enUso[1] = activos[6];
+            enUso[3] = 7;
+        }
+    }
 }
