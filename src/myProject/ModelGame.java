@@ -101,7 +101,6 @@ public class ModelGame {
 
         } else if (enUso[0] == 3) {
 
-
             if(inactivos[0]!=0 || inactivos[1]!=0 || inactivos[2]!=0 || inactivos[3]!=0 || inactivos[4]!=0 || inactivos[5]!=0) {
 
                 //En la posicion que estaba el dado usado se pone un nuevo dado random
@@ -109,12 +108,14 @@ public class ModelGame {
                 activos[enUso[2] - 1] = aleatorio.nextInt(6) + 1;
 
                 // se elimina un dado de la zona de inactivos
-                for (int i = 0; i < 6; i++) {
+                for (int i = 0; i < 5; i++) {
                     if (inactivos[i] != 0) {
                         inactivos[i] = 0;
                         break;
                     }
                 }
+            }else{
+                activos[enUso[2] - 1] = 80 + enUso[2];
             }
 
             for (int i = 0; i < 10; i++) {
@@ -123,7 +124,6 @@ public class ModelGame {
                     break;
                 }
             }
-
 
         } else if (enUso[0] == 4) {
             //pone el dado usado en la zona de utilizados
@@ -487,5 +487,4 @@ public class ModelGame {
     /**
      * This function returns "dragones"
      */
-    public int getDragones(){return dragones;}
 }

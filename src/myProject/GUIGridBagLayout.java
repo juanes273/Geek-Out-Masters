@@ -6,23 +6,29 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class GUIGridBagLayout extends JFrame {
-    public static final String MENSAJE_INICIO = "Bienvenido a Geek out Master"
-            + "El juego consiste en que tienes que tienes que conseguir la cantidad mayor de 42  en cada ronda para intentar superar los 30  puntos.\n"
-            + "El boton lanzar lanza los dados en la zona de activos."
+    public static final String MENSAJE_INICIO = " Bienvenido a Geek out Master"
+            + "\n El juego consiste en que tienes que tienes que conseguir la cantidad mayor de 42  en cada ronda para intentar superar los 30  puntos.\n"
+            + " El boton lanzar lanza los dados en la zona de activos."
             + "\n El boton reiniciar reinicia el juego"
             + "\n El boton actuar funciona luego de seleccionar un dado(en caso de que este tenga efecto solo) o dos dados(en caso de que el dado necesite otro para actuar)."
             + "\n El boton finalizar ronda termina la ronda, termina el turno el caso de que no queden mas movimientos posibles en la zona de activos. "
-            + "\n Para poder accionar el boton lanzar "
-            + "\npero ahora ganarás si sacas de nuevo el valor del Punto"
-            + "\nsin que previamente hayas sacado 7";
+            + "\n Para poder accionar el boton lanzar debes haber presionado el boton  'Finalizar ronda', de lo contrario no funcionará"
+            + "\n Las acciones de las caras del dado son:"
+            + "\n -Meeple: permite al jugador poder volver a lanzar uno de los dados activos."
+            + "\n -Cohete: permite al jugador eliminar un dado pasándolo al área de dados inactivos. "
+            + "\n -Superhéroe: permie al jugador dar vuelta (mostrar la cara opuesta) de un dado de la zona de dados activos. Un Superhéroe no puede voltearse a sí mismo."
+            + "\n -Corazón: permite al jugador tomar un dado de la zona de dados inactivos y lanzarlo en la zona de dados activos."
+            + " Si es el último de los dados activos, hace que el jugador pierda todos los puntos que lleve hasta el momento."
+            + "\n -42: Si el último o últimos dados activos tiene esta cara visible, se suman dichos puntos en el tablero de puntaje, acorde con las reglas indicadas, generando el puntaje de la ronda."
+            + "\n En caso de que no se llegue a los 30 puntos en 5 ronda,  perderas automaticamente.";
 
     private Header headerProject;
     private JLabel dado1,dado2,dado3,dado4,dado5,dado6,dado7,dado8,dado9,dado10,dado11,dado12,dado13,dado14,dado15,dado16,dado17,dado18,dado19,dado20,dado21,dado22,dado23,dado24,lPuntaje;
     private JButton actuar,lanzar, ayuda, salir, finalizarRonda, boton1,boton2,boton3,boton4,boton5,boton6,boton7,boton8,boton9,boton10,borrar,reiniciar;
-    private JPanel panelDados, inactivos,activos,utilizados,puntaje;
+    private JPanel inactivos,activos,utilizados,puntaje;
     private ImageIcon imagenDado1,imagenDado2,imagenDado3,imagenDado4,imagenDado5,imagenDado6,imagenDado7,imagenDado8,imagenDado9,imagenDado10,imagenDado11,
     imagenDado12,imagenDado13,imagenDado14,imagenDado15,imagenDado16,imagenDado17,imagenDado18,imagenDado19,imagenDado20,imagenDado21,imagenDado22,imagenDado23,imagenDado24,imagenPuntaje;
-    private JTextArea mensajeSalida, resultadosDados, ronda;
+    private JTextArea  ronda;
     private Escucha escucha;
     private ModelGame modelGame;
 
@@ -238,6 +244,7 @@ public class GUIGridBagLayout extends JFrame {
         ronda.setText("0");
         ronda.setBorder(BorderFactory.createTitledBorder("Rondas jugadas"));
         ronda.setLineWrap(true);
+        ronda.setEditable(false);
         constraints.gridx=1;
         constraints.gridy=1;
         constraints.gridwidth=1;
@@ -420,7 +427,7 @@ public class GUIGridBagLayout extends JFrame {
                     if (activos[0] != 0) {
                         modelGame.meterenuso1();
                     } else {
-                        JOptionPane.showMessageDialog(null, "Ta vacio mi loco");
+                        JOptionPane.showMessageDialog(null, "Este espacio está vacio");
                     }
                 }
             }else if(e.getSource()==boton2) {
@@ -434,7 +441,7 @@ public class GUIGridBagLayout extends JFrame {
                     if (activos[1] != 0) {
                         modelGame.meterenuso2();
                     } else {
-                        JOptionPane.showMessageDialog(null, "Ta vacio mi loco");
+                        JOptionPane.showMessageDialog(null, "Este espacio está vacio");
                     }
                 }
             }else if(e.getSource()==boton3) {
@@ -448,7 +455,7 @@ public class GUIGridBagLayout extends JFrame {
                     if (activos[2] != 0) {
                         modelGame.meterenuso3();
                     } else {
-                        JOptionPane.showMessageDialog(null, "Ta vacio mi loco");
+                        JOptionPane.showMessageDialog(null, "Este espacio está vacio");
                     }
                 }
             }else if(e.getSource()==boton4) {
@@ -462,7 +469,7 @@ public class GUIGridBagLayout extends JFrame {
                     if (activos[3] != 0) {
                         modelGame.meterenuso4();
                     } else {
-                        JOptionPane.showMessageDialog(null, "Ta vacio mi loco");
+                        JOptionPane.showMessageDialog(null, "Este espacio está vacio");
                     }
                 }
             }else if(e.getSource()==boton5) {
@@ -476,7 +483,7 @@ public class GUIGridBagLayout extends JFrame {
                     if (activos[4] != 0) {
                         modelGame.meterenuso5();
                     } else {
-                        JOptionPane.showMessageDialog(null, "Ta vacio mi loco");
+                        JOptionPane.showMessageDialog(null, "Este espacio está vacio");
                     }
                 }
             }else if(e.getSource()==boton6) {
@@ -490,7 +497,7 @@ public class GUIGridBagLayout extends JFrame {
                     if (activos[5] != 0) {
                         modelGame.meterenuso6();
                     } else {
-                        JOptionPane.showMessageDialog(null, "Ta vacio mi loco");
+                        JOptionPane.showMessageDialog(null, "Este espacio está vacio");
                     }
                 }
             }else if(e.getSource()==boton7) {
@@ -504,7 +511,7 @@ public class GUIGridBagLayout extends JFrame {
                     if (activos[6] != 0) {
                         modelGame.meterenuso7();
                     } else {
-                        JOptionPane.showMessageDialog(null, "Ta vacio mi loco");
+                        JOptionPane.showMessageDialog(null, "Este espacio está vacio");
                     }
                 }
             }else if(e.getSource()==actuar){
@@ -518,7 +525,7 @@ public class GUIGridBagLayout extends JFrame {
                 modelGame.borrarConteo();
                 if(((enUso[0]==3 || enUso[0]==2 || enUso[0]==6) && enUso[1]==0) || ((enUso[0]==1 || enUso[0]==4 || enUso[0]==5) && enUso[1]!=0)){
                     if(enUso[0] == 0 && enUso[2]==0){
-                        JOptionPane.showMessageDialog(null, "Ta vacio mi loco2");
+                        JOptionPane.showMessageDialog(null, "Este espacio está vacio");
                     }else{
                         modelGame.cambios();
                         enUso[0] = 0;
@@ -581,6 +588,7 @@ public class GUIGridBagLayout extends JFrame {
                 int activos[] = modelGame.getActivos();
                 modelGame.conteo();
                 modelGame.determinarEstado();
+                modelGame.comprobarDragones();
                 if(estadoSuma==true){modelGame.guardarCuarentaidos(); modelGame.guardarDragones();}
                 int cuarentaidos = modelGame.getCuarentaidos();
                 int activosContados[] = modelGame.getActivosContados();
@@ -598,17 +606,17 @@ public class GUIGridBagLayout extends JFrame {
                     imagenPuntaje = new ImageIcon(getClass().getResource("/recursos/p"+cuarentaidox+".png"));
                     lPuntaje.setIcon(imagenPuntaje);
                     if(cuarentaidos<8 && rondax==4){
-                        JOptionPane.showMessageDialog(null, "Perdiste maifren, presiona reiniciar para jugar de nuevo");
+                        JOptionPane.showMessageDialog(null, "Perdiste, presiona reiniciar para jugar de nuevo");
                     }else if(cuarentaidos>=8){
-                        JOptionPane.showMessageDialog(null, "Ganaste mafren");
+                        JOptionPane.showMessageDialog(null, "Ganaste, presiona reiniciar para jugar de nuevo");
                     }else{
-                        JOptionPane.showMessageDialog(null, "Acabaste ronda " + rondat);
+                        JOptionPane.showMessageDialog(null, "Acabaste la ronda " + rondat);
                     }
                 }else if(estado == false && rondax<5){
                     JOptionPane.showMessageDialog(null, "Por favor, relanza los dados para continuar");
                     modelGame.borrarConteo();
                 }else{
-                    JOptionPane.showMessageDialog(null, "Aun te quedan movimientos");
+                    JOptionPane.showMessageDialog(null, "Aun te quedan movimientos, no puedes terminar la ronda");
                     modelGame.borrarConteo();
                 }
             }else if(e.getSource()==borrar){
@@ -676,15 +684,7 @@ public class GUIGridBagLayout extends JFrame {
                 imagenPuntaje = new ImageIcon(getClass().getResource("/recursos/p"+cuarentaidos+".png"));
                 lPuntaje.setIcon(imagenPuntaje);
             }else if(e.getSource()==ayuda) {
-                int dragones = modelGame.getDragones();
-                int activosContados[]=modelGame.getActivosContados();
-                modelGame.conteo();
-                boolean estado = modelGame.getEstado();
-                modelGame.determinarEstado();
-                modelGame.borrarConteo();
-                int rondax = modelGame.getRonda();
-                int cuarentaidos = modelGame.getCuarentaidos();
-                JOptionPane.showMessageDialog(null, ""+dragones);
+                JOptionPane.showMessageDialog(null, MENSAJE_INICIO);
             }
         }
     }
