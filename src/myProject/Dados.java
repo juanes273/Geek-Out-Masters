@@ -4,8 +4,8 @@ import java.util.Random;
 
 /**
  * Class Dado generate a random value between 1 and 6
- * @author Juan Esteban Brand Tovar
- * @version 1.0.0 date 04/12/2021
+ * @author Juan Esteban Brand Tovar--Jose Miguel Becerra Casierra
+ * @version 1.0.0 date 27/01/2022
  */
 public class Dados {
     private int cara;

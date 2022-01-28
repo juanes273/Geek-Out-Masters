@@ -4,6 +4,12 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.Random;
 
+/**
+ * Class ModelGame
+ * @author Juan Esteban Brand Tovar--Jose Miguel Becerra Casierra
+ * @version 1.0.0 date 27/01/2022
+ */
+
 public class ModelGame {
     private Dados dado1, dado2, dado3, dado4, dado5, dado6, dado7, dado8, dado9, dado10;
     private int[] activos, inactivos, utilizados, enUso,activosContados;

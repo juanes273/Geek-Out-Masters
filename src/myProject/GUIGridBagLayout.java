@@ -5,6 +5,12 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+/**
+ * Class GUIGridBagLayout
+ * @author Juan Esteban Brand Tovar--Jose Miguel Becerra Casierra
+ * @version 1.0.0 date 27/01/2022
+ */
+
 public class GUIGridBagLayout extends JFrame {
     public static final String MENSAJE_INICIO = " Bienvenido a Geek out Master"
             + "\n El juego consiste en que tienes que tienes que conseguir la cantidad mayor de 42  en cada ronda para intentar superar los 30  puntos.\n"
