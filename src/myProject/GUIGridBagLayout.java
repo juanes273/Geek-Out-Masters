@@ -336,7 +336,356 @@ public class GUIGridBagLayout extends JFrame {
         });
     }
 
-    private class Escucha{
+    private class Escucha implements ActionListener{
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            if(e.getSource()==lanzar) {
+                modelGame.borrarDragones();
+                int activos[] = modelGame.getActivos();
+                boolean estado = modelGame.getEstado();
+                int rondaValor = modelGame.getRonda();
+                boolean estadoLanzar = modelGame.getEstadoLanzarCambio();
+                if(estado == false && rondaValor<5 && estadoLanzar==false) {
+                    modelGame.estadoSumaCambioTrue();
+                    modelGame.estadoLanzarCambioTrue();
+                    modelGame.lanzarDados();
+                    modelGame.cambiarEstadoTrue();
+                    int inactivos[] = modelGame.getInactivos();
+                    int utilizados[] = modelGame.getUtilizados();
+                    int enUso[] = modelGame.getEnUso();
+                    imagenDado1 = new ImageIcon(getClass().getResource("/recursos/" + activos[0] + ".png"));
+                    dado1.setIcon(imagenDado1);
+                    imagenDado2 = new ImageIcon(getClass().getResource("/recursos/" + activos[1] + ".png"));
+                    dado2.setIcon(imagenDado2);
+                    imagenDado3 = new ImageIcon(getClass().getResource("/recursos/" + activos[2] + ".png"));
+                    dado3.setIcon(imagenDado3);
+                    imagenDado4 = new ImageIcon(getClass().getResource("/recursos/" + activos[3] + ".png"));
+                    dado4.setIcon(imagenDado4);
+                    imagenDado5 = new ImageIcon(getClass().getResource("/recursos/" + activos[4] + ".png"));
+                    dado5.setIcon(imagenDado5);
+                    imagenDado6 = new ImageIcon(getClass().getResource("/recursos/" + activos[5] + ".png"));
+                    dado6.setIcon(imagenDado6);
+                    imagenDado7 = new ImageIcon(getClass().getResource("/recursos/" + activos[6] + ".png"));
+                    dado7.setIcon(imagenDado7);
+                    imagenDado8 = new ImageIcon(getClass().getResource("/recursos/" + inactivos[0] + ".png"));
+                    dado8.setIcon(imagenDado8);
+                    imagenDado9 = new ImageIcon(getClass().getResource("/recursos/" + inactivos[1] + ".png"));
+                    dado9.setIcon(imagenDado9);
+                    imagenDado10 = new ImageIcon(getClass().getResource("/recursos/" + inactivos[2] + ".png"));
+                    dado10.setIcon(imagenDado10);
+                    imagenDado11 = new ImageIcon(getClass().getResource("/recursos/" + utilizados[0] + ".png"));
+                    dado11.setIcon(imagenDado11);
+                    imagenDado12 = new ImageIcon(getClass().getResource("/recursos/" + utilizados[1] + ".png"));
+                    dado12.setIcon(imagenDado12);
+                    imagenDado13 = new ImageIcon(getClass().getResource("/recursos/" + utilizados[2] + ".png"));
+                    dado13.setIcon(imagenDado13);
+                    imagenDado14 = new ImageIcon(getClass().getResource("/recursos/" + utilizados[3] + ".png"));
+                    dado14.setIcon(imagenDado14);
+                    imagenDado15 = new ImageIcon(getClass().getResource("/recursos/" + utilizados[4] + ".png"));
+                    dado15.setIcon(imagenDado15);
+                    imagenDado16 = new ImageIcon(getClass().getResource("/recursos/" + utilizados[5] + ".png"));
+                    dado16.setIcon(imagenDado16);
+                    imagenDado17 = new ImageIcon(getClass().getResource("/recursos/" + utilizados[6] + ".png"));
+                    dado17.setIcon(imagenDado17);
+                    imagenDado18 = new ImageIcon(getClass().getResource("/recursos/" + utilizados[7] + ".png"));
+                    dado18.setIcon(imagenDado18);
+                    imagenDado19 = new ImageIcon(getClass().getResource("/recursos/" + utilizados[8] + ".png"));
+                    dado19.setIcon(imagenDado19);
+                    imagenDado20 = new ImageIcon(getClass().getResource("/recursos/" + utilizados[9] + ".png"));
+                    dado20.setIcon(imagenDado20);
+                    imagenDado21 = new ImageIcon(getClass().getResource("/recursos/" + inactivos[3] + ".png"));
+                    dado21.setIcon(imagenDado21);
+                    imagenDado22 = new ImageIcon(getClass().getResource("/recursos/" + inactivos[4] + ".png"));
+                    dado22.setIcon(imagenDado22);
+                    imagenDado23 = new ImageIcon(getClass().getResource("/recursos/" + inactivos[5] + ".png"));
+                    dado23.setIcon(imagenDado23);
 
+                }else if (rondaValor==5){
+                    ronda.setText("" + rondaValor);
+                    JOptionPane.showMessageDialog(null, "Se acabaron las rondas");
+                }else{
+                    JOptionPane.showMessageDialog(null, "Debes finalizar esta ronda primero");
+                    modelGame.cambiarEstadoTrue();
+                }
+            }else if(e.getSource()==salir){
+                System.exit(0);
+            }else if(e.getSource()==boton1) {
+                int activos[] = modelGame.getActivos();
+                int inactivos[] = modelGame.getInactivos();
+                int utilizados[] = modelGame.getUtilizados();
+                int enUso[] = modelGame.getEnUso();
+                if ((enUso[0]==activos[0] && enUso[2]==1) || (enUso[1]==activos[0] && enUso[3]==1) ) {
+                    JOptionPane.showMessageDialog(null, "No puedes seleccionar dos veces el mismo dado");
+                }else{
+                    if (activos[0] != 0) {
+                        modelGame.meterenuso1();
+                    } else {
+                        JOptionPane.showMessageDialog(null, "Ta vacio mi loco");
+                    }
+                }
+            }else if(e.getSource()==boton2) {
+                int activos[] = modelGame.getActivos();
+                int inactivos[] = modelGame.getInactivos();
+                int utilizados[] = modelGame.getUtilizados();
+                int enUso[] = modelGame.getEnUso();
+                if ((enUso[0]==activos[1] && enUso[2]==2) || (enUso[1]==activos[1] && enUso[3]==2) ) {
+                    JOptionPane.showMessageDialog(null, "No puedes seleccionar dos veces el mismo dado");
+                }else{
+                    if (activos[1] != 0) {
+                        modelGame.meterenuso2();
+                    } else {
+                        JOptionPane.showMessageDialog(null, "Ta vacio mi loco");
+                    }
+                }
+            }else if(e.getSource()==boton3) {
+                int activos[] = modelGame.getActivos();
+                int inactivos[] = modelGame.getInactivos();
+                int utilizados[] = modelGame.getUtilizados();
+                int enUso[] = modelGame.getEnUso();
+                if ((enUso[0]==activos[2] && enUso[2]==3) || (enUso[1]==activos[2] && enUso[3]==3) ) {
+                    JOptionPane.showMessageDialog(null, "No puedes seleccionar dos veces el mismo dado");
+                }else{
+                    if (activos[2] != 0) {
+                        modelGame.meterenuso3();
+                    } else {
+                        JOptionPane.showMessageDialog(null, "Ta vacio mi loco");
+                    }
+                }
+            }else if(e.getSource()==boton4) {
+                int activos[] = modelGame.getActivos();
+                int inactivos[] = modelGame.getInactivos();
+                int utilizados[] = modelGame.getUtilizados();
+                int enUso[] = modelGame.getEnUso();
+                if ((enUso[0]==activos[3] && enUso[2]==4) || (enUso[1]==activos[3] && enUso[3]==4) ) {
+                    JOptionPane.showMessageDialog(null, "No puedes seleccionar dos veces el mismo dado");
+                }else{
+                    if (activos[3] != 0) {
+                        modelGame.meterenuso4();
+                    } else {
+                        JOptionPane.showMessageDialog(null, "Ta vacio mi loco");
+                    }
+                }
+            }else if(e.getSource()==boton5) {
+                int activos[] = modelGame.getActivos();
+                int inactivos[] = modelGame.getInactivos();
+                int utilizados[] = modelGame.getUtilizados();
+                int enUso[] = modelGame.getEnUso();
+                if ((enUso[0]==activos[4] && enUso[2]==5) || (enUso[1]==activos[4] && enUso[3]==5) ) {
+                    JOptionPane.showMessageDialog(null, "No puedes seleccionar dos veces el mismo dado");
+                }else{
+                    if (activos[4] != 0) {
+                        modelGame.meterenuso5();
+                    } else {
+                        JOptionPane.showMessageDialog(null, "Ta vacio mi loco");
+                    }
+                }
+            }else if(e.getSource()==boton6) {
+                int activos[] = modelGame.getActivos();
+                int inactivos[] = modelGame.getInactivos();
+                int utilizados[] = modelGame.getUtilizados();
+                int enUso[] = modelGame.getEnUso();
+                if ((enUso[0]==activos[5] && enUso[2]==6) || (enUso[1]==activos[5] && enUso[3]==6) ) {
+                    JOptionPane.showMessageDialog(null, "No puedes seleccionar dos veces el mismo dado");
+                }else{
+                    if (activos[5] != 0) {
+                        modelGame.meterenuso6();
+                    } else {
+                        JOptionPane.showMessageDialog(null, "Ta vacio mi loco");
+                    }
+                }
+            }else if(e.getSource()==boton7) {
+                int activos[] = modelGame.getActivos();
+                int inactivos[] = modelGame.getInactivos();
+                int utilizados[] = modelGame.getUtilizados();
+                int enUso[] = modelGame.getEnUso();
+                if ((enUso[0]==activos[6] && enUso[2]==7) || (enUso[1]==activos[6] && enUso[3]==7) ) {
+                    JOptionPane.showMessageDialog(null, "No puedes seleccionar dos veces el mismo dado");
+                }else{
+                    if (activos[6] != 0) {
+                        modelGame.meterenuso7();
+                    } else {
+                        JOptionPane.showMessageDialog(null, "Ta vacio mi loco");
+                    }
+                }
+            }else if(e.getSource()==actuar){
+                int enUso[] = modelGame.getEnUso();
+                int activos[] = modelGame.getActivos();
+                int inactivos[] = modelGame.getInactivos();
+                int utilizados[] = modelGame.getUtilizados();
+                boolean estadou = modelGame.getEstado();
+                modelGame.conteo();
+                modelGame.determinarEstado();
+                modelGame.borrarConteo();
+                if(((enUso[0]==3 || enUso[0]==2 || enUso[0]==6) && enUso[1]==0) || ((enUso[0]==1 || enUso[0]==4 || enUso[0]==5) && enUso[1]!=0)){
+                    if(enUso[0] == 0 && enUso[2]==0){
+                        JOptionPane.showMessageDialog(null, "Ta vacio mi loco2");
+                    }else{
+                        modelGame.cambios();
+                        enUso[0] = 0;
+                        enUso[1] = 0;
+                        enUso[2] = 0;
+                        enUso[3] = 0;
+                        imagenDado1 = new ImageIcon(getClass().getResource("/recursos/"+activos[0]+".png"));
+                        dado1.setIcon(imagenDado1);
+                        imagenDado2 = new ImageIcon(getClass().getResource("/recursos/"+activos[1]+".png"));
+                        dado2.setIcon(imagenDado2);
+                        imagenDado3 = new ImageIcon(getClass().getResource("/recursos/"+activos[2]+".png"));
+                        dado3.setIcon(imagenDado3);
+                        imagenDado4 = new ImageIcon(getClass().getResource("/recursos/"+activos[3]+".png"));
+                        dado4.setIcon(imagenDado4);
+                        imagenDado5 = new ImageIcon(getClass().getResource("/recursos/"+activos[4]+".png"));
+                        dado5.setIcon(imagenDado5);
+                        imagenDado6 = new ImageIcon(getClass().getResource("/recursos/"+activos[5]+".png"));
+                        dado6.setIcon(imagenDado6);
+                        imagenDado7 = new ImageIcon(getClass().getResource("/recursos/"+activos[6]+".png"));
+                        dado7.setIcon(imagenDado7);
+                        imagenDado8 = new ImageIcon(getClass().getResource("/recursos/"+inactivos[0]+".png"));
+                        dado8.setIcon(imagenDado8);
+                        imagenDado9 = new ImageIcon(getClass().getResource("/recursos/"+inactivos[1]+".png"));
+                        dado9.setIcon(imagenDado9);
+                        imagenDado10 = new ImageIcon(getClass().getResource("/recursos/"+inactivos[2]+".png"));
+                        dado10.setIcon(imagenDado10);
+                        imagenDado11 = new ImageIcon(getClass().getResource("/recursos/"+utilizados[0]+".png"));
+                        dado11.setIcon(imagenDado11);
+                        imagenDado12 = new ImageIcon(getClass().getResource("/recursos/"+utilizados[1]+".png"));
+                        dado12.setIcon(imagenDado12);
+                        imagenDado13 = new ImageIcon(getClass().getResource("/recursos/"+utilizados[2]+".png"));
+                        dado13.setIcon(imagenDado13);
+                        imagenDado14 = new ImageIcon(getClass().getResource("/recursos/"+utilizados[3]+".png"));
+                        dado14.setIcon(imagenDado14);
+                        imagenDado15 = new ImageIcon(getClass().getResource("/recursos/"+utilizados[4]+".png"));
+                        dado15.setIcon(imagenDado15);
+                        imagenDado16 = new ImageIcon(getClass().getResource("/recursos/"+utilizados[5]+".png"));
+                        dado16.setIcon(imagenDado16);
+                        imagenDado17 = new ImageIcon(getClass().getResource("/recursos/"+utilizados[6]+".png"));
+                        dado17.setIcon(imagenDado17);
+                        imagenDado18 = new ImageIcon(getClass().getResource("/recursos/"+utilizados[7]+".png"));
+                        dado18.setIcon(imagenDado18);
+                        imagenDado19 = new ImageIcon(getClass().getResource("/recursos/"+utilizados[8]+".png"));
+                        dado19.setIcon(imagenDado19);
+                        imagenDado20 = new ImageIcon(getClass().getResource("/recursos/"+utilizados[9]+".png"));
+                        dado20.setIcon(imagenDado20);
+                        imagenDado21 = new ImageIcon(getClass().getResource("/recursos/"+inactivos[3]+".png"));
+                        dado21.setIcon(imagenDado21);
+                        imagenDado22 = new ImageIcon(getClass().getResource("/recursos/"+inactivos[4]+".png"));
+                        dado22.setIcon(imagenDado22);
+                        imagenDado23 = new ImageIcon(getClass().getResource("/recursos/"+inactivos[5]+".png"));
+                        dado23.setIcon(imagenDado23);
+                        modelGame.borrarConteo();
+                    }
+                }else{
+                    JOptionPane.showMessageDialog(null, "No puedes usar este dado solo");
+                }
+            }else if(e.getSource()==finalizarRonda){
+                boolean estadoSuma = modelGame.getEstadoSuma();
+                int activos[] = modelGame.getActivos();
+                modelGame.conteo();
+                modelGame.determinarEstado();
+                if(estadoSuma==true){modelGame.guardarCuarentaidos(); modelGame.guardarDragones();}
+                int cuarentaidos = modelGame.getCuarentaidos();
+                int activosContados[] = modelGame.getActivosContados();
+                boolean estado = modelGame.getEstado();
+                modelGame.determinarEstado();
+                int rondax = modelGame.getRonda();
+                if(estado == false && rondax<5 && estadoSuma==true){
+                    modelGame.comprobarDragones();
+                    int cuarentaidox = modelGame.getCuarentaidos();
+                    modelGame.aumentoRonda();
+                    int rondat = modelGame.getRonda();
+                    modelGame.estadoLanzarCambioFalse();
+                    ronda.setText(""+rondat);
+                    modelGame.estadoSumaCambioFalse();
+                    imagenPuntaje = new ImageIcon(getClass().getResource("/recursos/p"+cuarentaidox+".png"));
+                    lPuntaje.setIcon(imagenPuntaje);
+                    if(cuarentaidos<8 && rondax==4){
+                        JOptionPane.showMessageDialog(null, "Perdiste maifren, presiona reiniciar para jugar de nuevo");
+                    }else if(cuarentaidos>=8){
+                        JOptionPane.showMessageDialog(null, "Ganaste mafren");
+                    }else{
+                        JOptionPane.showMessageDialog(null, "Acabaste ronda " + rondat);
+                    }
+                }else if(estado == false && rondax<5){
+                    JOptionPane.showMessageDialog(null, "Por favor, relanza los dados para continuar");
+                    modelGame.borrarConteo();
+                }else{
+                    JOptionPane.showMessageDialog(null, "Aun te quedan movimientos");
+                    modelGame.borrarConteo();
+                }
+            }else if(e.getSource()==borrar){
+                modelGame.deseleccionar();
+            }else if(e.getSource()==reiniciar){
+                modelGame.estadoLanzarCambioFalse();
+                modelGame.reinciarRonda();
+                boolean estado = modelGame.getEstado();
+                int rondaValor = modelGame.getRonda();
+                int activos[] = modelGame.getActivos();
+                int inactivos[] = modelGame.getInactivos();
+                int utilizados[] = modelGame.getUtilizados();
+                int enUso[] = modelGame.getEnUso();
+                imagenDado1 = new ImageIcon(getClass().getResource("/recursos/0.png"));
+                dado1.setIcon(imagenDado1);
+                imagenDado2 = new ImageIcon(getClass().getResource("/recursos/0.png"));
+                dado2.setIcon(imagenDado2);
+                imagenDado3 = new ImageIcon(getClass().getResource("/recursos/0.png"));
+                dado3.setIcon(imagenDado3);
+                imagenDado4 = new ImageIcon(getClass().getResource("/recursos/0.png"));
+                dado4.setIcon(imagenDado4);
+                imagenDado5 = new ImageIcon(getClass().getResource("/recursos/0.png"));
+                dado5.setIcon(imagenDado5);
+                imagenDado6 = new ImageIcon(getClass().getResource("/recursos/0.png"));
+                dado6.setIcon(imagenDado6);
+                imagenDado7 = new ImageIcon(getClass().getResource("/recursos/0.png"));
+                dado7.setIcon(imagenDado7);
+                imagenDado8 = new ImageIcon(getClass().getResource("/recursos/0.png"));
+                dado8.setIcon(imagenDado8);
+                imagenDado9 = new ImageIcon(getClass().getResource("/recursos/0.png"));
+                dado9.setIcon(imagenDado9);
+                imagenDado10 = new ImageIcon(getClass().getResource("/recursos/0.png"));
+                dado10.setIcon(imagenDado10);
+                imagenDado11 = new ImageIcon(getClass().getResource("/recursos/0.png"));
+                dado11.setIcon(imagenDado11);
+                imagenDado12 = new ImageIcon(getClass().getResource("/recursos/0.png"));
+                dado12.setIcon(imagenDado12);
+                imagenDado13 = new ImageIcon(getClass().getResource("/recursos/0.png"));
+                dado13.setIcon(imagenDado13);
+                imagenDado14 = new ImageIcon(getClass().getResource("/recursos/0.png"));
+                dado14.setIcon(imagenDado14);
+                imagenDado15 = new ImageIcon(getClass().getResource("/recursos/0.png"));
+                dado15.setIcon(imagenDado15);
+                imagenDado16 = new ImageIcon(getClass().getResource("/recursos/0.png"));
+                dado16.setIcon(imagenDado16);
+                imagenDado17 = new ImageIcon(getClass().getResource("/recursos/0.png"));
+                dado17.setIcon(imagenDado17);
+                imagenDado18 = new ImageIcon(getClass().getResource("/recursos/0.png"));
+                dado18.setIcon(imagenDado18);
+                imagenDado19 = new ImageIcon(getClass().getResource("/recursos/0.png"));
+                dado19.setIcon(imagenDado19);
+                imagenDado20 = new ImageIcon(getClass().getResource("/recursos/0.png"));
+                dado20.setIcon(imagenDado20);
+                imagenDado21 = new ImageIcon(getClass().getResource("/recursos/0.png"));
+                dado21.setIcon(imagenDado21);
+                imagenDado22 = new ImageIcon(getClass().getResource("/recursos/0.png"));
+                dado22.setIcon(imagenDado22);
+                imagenDado23 = new ImageIcon(getClass().getResource("/recursos/0.png"));
+                dado23.setIcon(imagenDado23);
+                modelGame.borrarConteo();
+                ronda.setText("" + rondaValor);
+                modelGame.determinarEstado();
+                modelGame.borrarCuarentaidos();
+                int cuarentaidos = modelGame.getCuarentaidos();
+                imagenPuntaje = new ImageIcon(getClass().getResource("/recursos/p"+cuarentaidos+".png"));
+                lPuntaje.setIcon(imagenPuntaje);
+            }else if(e.getSource()==ayuda) {
+                int dragones = modelGame.getDragones();
+                int activosContados[]=modelGame.getActivosContados();
+                modelGame.conteo();
+                boolean estado = modelGame.getEstado();
+                modelGame.determinarEstado();
+                modelGame.borrarConteo();
+                int rondax = modelGame.getRonda();
+                int cuarentaidos = modelGame.getCuarentaidos();
+                JOptionPane.showMessageDialog(null, ""+dragones);
+            }
+        }
     }
 }
